@@ -22,7 +22,7 @@ std::array<std::array<Key, MATRIX_COLS>, MATRIX_ROWS> matrix = {
     KEYMAP(
         MEDIATAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, TD_MPLY_DND,
         CTRLESC, KC_A, KC_S, KC_D, NUMF, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, MEDIAQUOT,
-        L_NUM, GUIZ, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, GUISLSH, L_SYM,
+        L_WORD, GUIZ, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, GUISLSH, L_WORD,
         L_NAV, KC_LSFT, ALTTAB, KC_ENT, SYMSPC, KC_BSPC
     )
 };
@@ -46,26 +46,26 @@ void setupKeymap() {
         MEDIATAB_TAP, _______, _______, _______, _______, _______,                              _______, _______, _______, _______, _______, _______,
         CTRLESC_TAP, _______, _______, _______, NUMF_TAP, _______,                              _______, _______, _______, _______, _______, MEDIAQUOT_TAP,
         _______, GUIZ_TAP, _______, _______, _______, _______,                              _______, _______, _______, _______, GUISLSH_TAP, _______,
-                                                _______, _______, _______,    _______, SYMSPC_TAP, _______
+                                                _______, _______, ALTTAB_TAP,    _______, SYMSPC_TAP, _______
     );
 
     uint32_t qwerty_hold[MATRIX_ROWS][MATRIX_COLS] = KEYMAP(
         MEDIATAB_HOLD, _______, _______, _______, _______, _______,                         _______, _______, _______, _______, _______, _______,
         CTRLESC_HOLD, _______, _______, _______, NUMF_HOLD, _______,                    _______, _______, _______, _______, _______, MEDIAQUOT_HOLD,
         _______, GUIZ_HOLD, _______, _______, _______, _______,                       _______, _______, _______, _______, GUISLSH_HOLD, _______,
-                                                _______, _______, _______,    _______, SYMSPC_HOLD, _______
+                                                _______, _______, ALTTAB_HOLD,    _______, SYMSPC_HOLD, _______
     );
 
     uint32_t symbol_layer[MATRIX_ROWS][MATRIX_COLS] = KEYMAP(
         CTL_C, KC_TILD, KC_AT, KC_LCBR, KC_RCBR, KC_HASH, KC_ASTR, KC_CIRC, KC_AMPR, KC_PIPE, KC_BSLS, CTL_GRV,
         KC_LCTL, KC_GRV, KC_MINS, KC_LPRN, KC_RPRN, KC_EXLM, KC_QUES, KC_DLR, KC_LT, KC_GT, KC_SLSH, KC_DQUO,
         KC_LALT, KC_LGUI, KC_UNDS, KC_LBRC, KC_RBRC, KC_PLUS, KC_P0, KC_EQL, KC_PERC, KC_COLN, KC_NO, KC_NO,
-        KC_NO, KC_LSFT, KC_LALT, KC_NO, KC_TRNS, KC_NO
+        KC_NO, KC_LSFT, KC_LALT, KC_NO, L_SYM, KC_NO
     );
 
     uint32_t num_layer[MATRIX_ROWS][MATRIX_COLS] = KEYMAP(
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ASTR, KC_7, KC_8, KC_9, KC_SLSH, KC_EQL,
-        KC_LCTL, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_PLUS, KC_4, KC_5, KC_6, KC_MINS, KC_PERC,
+        KC_LCTL, KC_NO, KC_NO, KC_NO, L_NUM, KC_NO, KC_PLUS, KC_4, KC_5, KC_6, KC_MINS, KC_PERC,
         KC_LALT, KC_LGUI, KC_NO, KC_NO, KC_NO, KC_NO,  KC_0, KC_1, KC_2, KC_3, KC_DOT, KC_PENT,
         KC_NO, KC_LSFT, KC_TAB, KC_NO, KC_SPC, KC_BSPC
     );
@@ -74,20 +74,20 @@ void setupKeymap() {
         KC_NO, KC_NO, NXT_WORD, PRV_TAB, NXT_TAB, KC_NO, KC_HOME, KC_PGDN, KC_PGUP, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_LCTL, KC_LALT, KC_LSFT, KC_LGUI, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, PRV_WORD, KC_END, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_TRNS, KC_NO, KC_NO, KC_NO, KC_SPC, KC_BSPC
+        L_NAV, KC_NO, KC_NO, KC_NO, KC_SPC, KC_BSPC
     );
 
     uint32_t media_layer[MATRIX_ROWS][MATRIX_COLS] = KEYMAP(
-        KC_TRNS, SCRN, SCRN_WHL, SCRN_SLCT, SCRN_SLCT_CP, KC_VOLU, UP_LEFT_CNR, PRV_SCRN, NXT_SCRN, UP_RGHT_CNR, WND_LRG, SLEEP,
-        KC_CAPS, KC_F11, KC_MPRV, KC_MNXT, KC_MPLY, KC_VOLD, WND_LEFT, WND_DOWN, WND_UP, WND_RGHT, WND_SML, KC_TRNS,
-        KC_BRID, KC_BRIU, ZOOM_OUT, ZOOM_IN, NXT_WND, KC_MUTE, BTM_LEFT_CNR, WND_FULL, WND_CNTR, BTM_RGHT_CNR, WND_FULL_ALMST, RESET,
+        L_MEDIA, SCRN, SCRN_WHL, SCRN_SLCT, SCRN_SLCT_CP, KC_VOLU, UP_LEFT_CNR, PRV_SCRN, NXT_SCRN, UP_RGHT_CNR, WND_LRG, SLEEP,
+        KC_CAPS, KC_F11, KC_MPRV, KC_MNXT, KC_MPLY, KC_VOLD, WND_LEFT, WND_DOWN, WND_UP, WND_RGHT, WND_SML, L_MEDIA,
+        KC_BRID, KC_BRIU, ZOOM_OUT, ZOOM_IN, NXT_WND, KC_MUTE, BTM_LEFT_CNR, WND_FULL, WND_CNTR, BTM_RGHT_CNR, WND_FULL_ALMST, SERIAL_DFU,
         PRV_SPACE, NXT_SPACE, KC_NO, KC_NO, KC_NO, KC_NO
     );
 
     uint32_t word_layer[MATRIX_ROWS][MATRIX_COLS] = KEYMAP(
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO, PRINT_BATTERY, KC_NO,
         KC_NO, KC_NO, EM_DASH, KC_NO, COMP_MODE, KC_NO,  KC_NO, KC_NO, KC_NO, KC_NO, PRINT_INFO, KC_NO,
-        KC_TRNS, KC_NO, EN_DASH, KC_NO, PASTE_STYLE,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, PRINT_BLE, KC_TRNS,
+        L_WORD, KC_NO, EN_DASH, KC_NO, PASTE_STYLE,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, PRINT_BLE, L_WORD,
         KC_NO, KC_NO, KC_NO,  KC_NO, KC_NO, KC_DEL
     );
 
